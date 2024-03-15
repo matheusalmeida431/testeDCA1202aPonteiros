@@ -1,2 +1,4 @@
 # testeDCA1202aPonteiros
-testeDCA1202a
+Integrantes:
+  - Jhonatan Bryan
+  - Matheus Almeida Fontes 
