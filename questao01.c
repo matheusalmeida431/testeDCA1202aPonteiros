@@ -1,15 +1,20 @@
 #include <stdio.h>
 
-int main() {
-    int i=3, j=5;
-    int *p, *q;
-    p = &i;
-    q = &j;
-    printf("%d, %d, %d, %d\n", p==&i, *p - *q, **&p, 3 - *p/(*q) + 7);
-    //para p == &i o resultado será 1, porque se p = i ele retorna true e 1 = true
-    //para *p - *q ele retornará os valores que estão contidos nas variaveis para fazer a conta, nesse caso é 3 - 5 = -2
-    //para ** é o ponteiro do ponteiro ou seja p = &3 e &p = p
-    //para 3 - *p/(*q) + 7 ele usa o * que chama os valores declaradas nas variaveis, então aqui ele apenas retornará o resultado da conta
+int main(void){
+  
+  int i=3,j=5;
+  int *p, *q;
+  
+  p = &i;
+  q = &j;
 
-    return 0;
+printf("O resultado vai ser igual a '%d' pois os dois valores têm o mesmo endereço de memória, e 1 quer dizer verdadeiro\n\n", p == &i);
+
+  printf("O Resultado deu '%d', já que *p aponta para i=2 e *q aponta para j=5\n\n", *p - *q);
+  
+  printf("Usando a expressão **& vamos está obtendo o ponteiro do ponteiro e esse endereço do valor de i = %d\n\n", **&p);
+ 
+  printf("A expressão na verdade ficaria 3 - 0 + 7 pois a divisão de dois inteiros retorna apenas a parte inteira por isso o resultado e %d\n\n", 3 - *p/(*q) + 7);
+
+  return 0;
 }
