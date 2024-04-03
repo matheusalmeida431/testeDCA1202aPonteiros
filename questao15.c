@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Função para comparar dois floats (necessária para qsort)
-int comparaFloats(const void *a, const void *b) {
-    const float *floatA = (const float *)a;
-    const float *floatB = (const float *)b;
-    
-    if (*floatA < *floatB) return -1;
-    else if (*floatA > *floatB) return 1;
-    else return 0;
-}
-
 // Função para ler 'n' valores float e apresentá-los em ordem crescente
 void lerEOrdenarFloats(int n) {
     float *valores = (float *)malloc(n * sizeof(float)); // Aloca memória para armazenar os valores
@@ -22,27 +12,37 @@ void lerEOrdenarFloats(int n) {
     // Leitura dos valores
     printf("Digite %d valores float:\n", n);
     for (int i = 0; i < n; i++) {
-        scanf("%f", &valores[i]);
+        scanf("%f", &valores[i]); // Lê cada valor float e armazena no array 'valores'
     }
 
-    // Ordenação dos valores
-    qsort(valores, n, sizeof(float), comparaFloats);
+    // Algoritmo para ordenar os valores em ordem crescente
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (valores[j] > valores[j + 1]) {
+                // Troca os valores
+                float temp = valores[j];
+                valores[j] = valores[j + 1];
+                valores[j + 1] = temp;
+            }
+        }
+    }
 
     // Apresentação dos valores em ordem crescente
     printf("Valores em ordem crescente:\n");
     for (int i = 0; i < n; i++) {
-        printf("%.2f\n", valores[i]);
+        printf("%.2f\n", valores[i]); // Imprime cada valor float com 2 casas decimais
     }
 
-    // Libera a memória alocada
+    // Libera a memória alocada para 'valores'
     free(valores);
 }
 
 int main() {
     int n;
     printf("Quantos valores float deseja inserir? ");
-    scanf("%d", &n);
-    
+    scanf("%d", &n); // Lê o número de valores float a serem inseridos pelo usuário
+
+    // Chama a função lerEOrdenarFloats para ler e ordenar os valores float
     lerEOrdenarFloats(n);
 
     return 0;
