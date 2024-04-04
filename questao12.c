@@ -1,5 +1,5 @@
 aloha[2] = value; // Válido
-scanf("%f", &aloha); // Válido
+scanf("%f", &aloha); // Invalido
 aloha = "value"; // Invalido
 printf("%f", aloha); // Invalido
 coisas[4][4] = aloha[3]; // Válido
